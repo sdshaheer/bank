@@ -235,7 +235,7 @@ const Inbound = () => {
     return (
         <div className="inbound-root">
             <div className="inbound-wrapper">
-                {/* --- MAIN DASHBOARD CARD --- */}
+                {/* --- MAIN DASHBOARD CONTAINER (OUTER CARD) --- */}
                 <div className="inbound-main-dashboard-card">
                     {/* Page Top Header */}
                     <div className="inbound-header-container">
@@ -254,24 +254,26 @@ const Inbound = () => {
                     {/* Flexbox Layout */}
                     <div className="inbound-sections-flex">
                         {sections.map((section) => (
-                            <div key={section.id} className="inbound-section-item">
-                                <h2 className="inbound-section-title">{section.title}</h2>
-                                <div className="inbound-info-cards-container">
-                                    {section.infoCards.map((card, idx) => (
-                                        <InfoCard
-                                            key={idx}
-                                            title={card.title}
-                                            items={card.items}
-                                            alert={card.alert}
-                                            hasClock={card.hasClock}
-                                        />
-                                    ))}
+                            <div key={section.id} className="inbound-section-card">
+                                <div className="inbound-section-item">
+                                    <h2 className="inbound-section-title">{section.title}</h2>
+                                    <div className="inbound-info-cards-container">
+                                        {section.infoCards.map((card, idx) => (
+                                            <InfoCard
+                                                key={idx}
+                                                title={card.title}
+                                                items={card.items}
+                                                alert={card.alert}
+                                                hasClock={card.hasClock}
+                                            />
+                                        ))}
+                                    </div>
+                                    <StatTableCard
+                                        title={section.inbound.title}
+                                        messagesIngested={section.inbound.messagesIngested}
+                                        stats={section.inbound.stats}
+                                    />
                                 </div>
-                                <StatTableCard
-                                    title={section.inbound.title}
-                                    messagesIngested={section.inbound.messagesIngested}
-                                    stats={section.inbound.stats}
-                                />
                             </div>
                         ))}
                     </div>
