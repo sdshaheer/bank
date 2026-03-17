@@ -24,7 +24,8 @@ const JobSummary = () => {
                 innerSize: '70%',
                 dataLabels: {
                     enabled: true,
-                    format: '{point.name}: {point.y}',
+                    useHTML: true,
+                    format: '<span style="color: {point.color}">{point.name}: {point.y}</span>',
                     distance: 10,
                     style: {
                         fontSize: '10px',

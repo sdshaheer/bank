@@ -10,7 +10,7 @@ import OutboundDashboard from "./components/outbound/OutboundDashboard";
 const App = () => {
   return (
     <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <Inbound />
+      <OutboundDashboard />
     </div>
   )
 }
