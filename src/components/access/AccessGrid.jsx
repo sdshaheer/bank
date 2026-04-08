@@ -290,13 +290,7 @@ const CheckboxRenderer = (props) => {
     }}>
       <div style={{
         display: 'flex',
-        alignItems: 'center',
-        backgroundColor: isSpecialBox ? '#e2e8f0' : 'transparent',
-        border: isSpecialBox ? '1px solid #cbd5e1' : 'none',
-        padding: isSpecialBox ? '2px 5px' : '0',
-        borderRadius: '3px',
-        height: isSpecialBox ? '30px' : 'auto',
-        marginTop: isSpecialBox ? '5px' : '0'
+        alignItems: 'center'
       }}>
         <input
           type="checkbox"
@@ -393,7 +387,7 @@ export default function AccessGrid() {
       cellRenderer: "checkboxRenderer",
       headerComponent: "headerCheckboxRenderer",
       width: 100,
-      cellStyle: params => params.data && params.data.type === 'dataset' ? { backgroundColor: '#f1f5f9' } : null
+      cellStyle: params => params.data && params.data.type === 'dataset' ? { backgroundColor: '#e2e8f0' } : null
     },
     {
       headerName: "Write",
@@ -401,7 +395,7 @@ export default function AccessGrid() {
       cellRenderer: "checkboxRenderer",
       headerComponent: "headerCheckboxRenderer",
       width: 100,
-      cellStyle: params => params.data && params.data.type === 'dataset' ? { backgroundColor: '#f1f5f9' } : null
+      cellStyle: params => params.data && params.data.type === 'dataset' ? { backgroundColor: '#e2e8f0' } : null
     },
     {
       headerName: "Admin",
@@ -409,7 +403,7 @@ export default function AccessGrid() {
       cellRenderer: "checkboxRenderer",
       headerComponent: "headerCheckboxRenderer",
       width: 100,
-      cellStyle: params => params.data && params.data.type === 'dataset' ? { backgroundColor: '#f1f5f9' } : null
+      cellStyle: params => params.data && params.data.type === 'dataset' ? { backgroundColor: '#e2e8f0' } : null
     },
     {
       headerName: "Delegate",
@@ -417,7 +411,7 @@ export default function AccessGrid() {
       cellRenderer: "checkboxRenderer",
       headerComponent: "headerCheckboxRenderer",
       width: 110,
-      cellStyle: params => params.data && params.data.type === 'dataset' ? { backgroundColor: '#f1f5f9' } : null
+      cellStyle: params => params.data && params.data.type === 'dataset' ? { backgroundColor: '#e2e8f0' } : null
     }
   ], []);
 
@@ -454,6 +448,8 @@ export default function AccessGrid() {
         getRowStyle={getRowStyle}
         getRowId={getRowId}
         animateRows={true}
+        autoSizeStrategy={{ type: 'fitGridWidth' }}
+        onGridSizeChanged={(params) => params.api.sizeColumnsToFit()}
         headerHeight={45}
         rowHeight={40}
         suppressCellFocus={true}
