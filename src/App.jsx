@@ -6,11 +6,13 @@ import StorageDashboard from "./components/storage/StorageDashboard";
 import QueryEngine from "./components/query/QueryEngine";
 import ApiStatusCard from "./components/api/ApiStatusCard";
 import OutboundDashboard from "./components/outbound/OutboundDashboard";
+import AccessGrid from "./components/access/AccessGrid";
 
 const App = () => {
   return (
     <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <OutboundDashboard />
+      {/* <OutboundDashboard /> */}
+      <AccessGrid />
     </div>
   )
 }
