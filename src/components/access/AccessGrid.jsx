@@ -59,7 +59,19 @@ const initialData = [
     dataSets: "1/1",
     dataStreams: "5/5",
     expanded: false,
-    children: []
+    children: [
+      {
+        id: "2.1",
+        name: "Derivatives",
+        type: "dataset",
+        dataStreams: "Options, Futures...",
+        expanded: false,
+        children: [
+          { id: "2.1.1", name: "Options", type: "stream", permissions: { read: true, write: true, admin: false, delegate: false }, users: { write: "AK" } },
+          { id: "2.1.2", name: "Futures", type: "stream", permissions: { read: true, write: false, admin: false, delegate: false } }
+        ]
+      }
+    ]
   },
   {
     id: "3",
@@ -91,7 +103,19 @@ const initialData = [
     dataSets: "2/5",
     dataStreams: "8/20",
     expanded: false,
-    children: []
+    children: [
+      {
+        id: "4.1",
+        name: "Lending Services",
+        type: "dataset",
+        dataStreams: "Loans, Mortgages...",
+        expanded: false,
+        children: [
+          { id: "4.1.1", name: "Loans", type: "stream", permissions: { read: true, write: true, admin: false, delegate: true }, users: { write: "user_avatar" } },
+          { id: "4.1.2", name: "Mortgages", type: "stream", permissions: { read: false, write: false, admin: false, delegate: false } }
+        ]
+      }
+    ]
   },
   {
     id: "5",
@@ -101,7 +125,19 @@ const initialData = [
     dataSets: "10/10",
     dataStreams: "45/45",
     expanded: false,
-    children: []
+    children: [
+      {
+        id: "5.1",
+        name: "Payments & Receivables",
+        type: "dataset",
+        dataStreams: "Cross-border, Domestic...",
+        expanded: false,
+        children: [
+          { id: "5.1.1", name: "Cross-border", type: "stream", permissions: { read: true, write: true, admin: true, delegate: false }, users: { admin: "X" } },
+          { id: "5.1.2", name: "Domestic", type: "stream", permissions: { read: true, write: true, admin: false, delegate: false } }
+        ]
+      }
+    ]
   },
   {
     id: "6",
@@ -133,7 +169,19 @@ const initialData = [
     dataSets: "1/5",
     dataStreams: "2/10",
     expanded: false,
-    children: []
+    children: [
+      {
+        id: "7.1",
+        name: "Consumer Accounts",
+        type: "dataset",
+        dataStreams: "Checking, Savings...",
+        expanded: false,
+        children: [
+          { id: "7.1.1", name: "Checking", type: "stream", permissions: { read: true, write: false, admin: false, delegate: false } },
+          { id: "7.1.2", name: "Savings", type: "stream", permissions: { read: true, write: false, admin: false, delegate: false } }
+        ]
+      }
+    ]
   },
   {
     id: "8",
@@ -143,7 +191,19 @@ const initialData = [
     dataSets: "8/8",
     dataStreams: "25/25",
     expanded: false,
-    children: []
+    children: [
+      {
+        id: "8.1",
+        name: "M&A Advisory",
+        type: "dataset",
+        dataStreams: "Deals, Valuations...",
+        expanded: false,
+        children: [
+          { id: "8.1.1", name: "Deals", type: "stream", permissions: { read: true, write: true, admin: false, delegate: true }, users: { delegate: "D" } },
+          { id: "8.1.2", name: "Valuations", type: "stream", permissions: { read: true, write: true, admin: true, delegate: false }, users: { admin: "user_avatar" } }
+        ]
+      }
+    ]
   },
   {
     id: "9",
@@ -153,7 +213,19 @@ const initialData = [
     dataSets: "2/6",
     dataStreams: "10/24",
     expanded: false,
-    children: []
+    children: [
+      {
+        id: "9.1",
+        name: "Fund Performance",
+        type: "dataset",
+        dataStreams: "Mutual Funds, ETFs...",
+        expanded: false,
+        children: [
+          { id: "9.1.1", name: "Mutual Funds", type: "stream", permissions: { read: true, write: false, admin: false, delegate: false } },
+          { id: "9.1.2", name: "ETFs", type: "stream", permissions: { read: true, write: false, admin: false, delegate: false } }
+        ]
+      }
+    ]
   }
 ];
 
