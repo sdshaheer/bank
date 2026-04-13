@@ -7,12 +7,14 @@ import QueryEngine from "./components/query/QueryEngine";
 import ApiStatusCard from "./components/api/ApiStatusCard";
 import OutboundDashboard from "./components/outbound/OutboundDashboard";
 import AccessGrid from "./components/access/AccessGrid";
+import ActiveIncidentsBar from "./components/topbar/ActiveIncidentsBar";
 
 const App = () => {
   return (
     <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      <ActiveIncidentsBar />
       {/* <OutboundDashboard /> */}
-      <AccessGrid />
+      {/* <AccessGrid /> */}
     </div>
   )
 }
