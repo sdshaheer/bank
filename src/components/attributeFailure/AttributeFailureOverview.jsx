@@ -2,6 +2,25 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
+const ProgressiveBar = ({ percentage = 60, color = '#E13B19', label = 'Progress' }) => {
+  return (
+    <div style={{
+      width: '100%',
+      maxWidth: '300px',
+    }}>
+      <div style={{ height: '6px', width: '100%', background: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
+        <div style={{
+          height: '100%',
+          width: `${percentage}%`,
+          background: color,
+          borderRadius: '3px',
+          transition: 'width 0.6s ease'
+        }} />
+      </div>
+    </div>
+  );
+};
+
 const AttributeFailureOverview = () => {
   const chartOptions = {
     chart: {
@@ -146,16 +165,24 @@ const AttributeFailureOverview = () => {
   };
 
   return (
-    <div>
+    <div style={{ fontFamily: 'sans-serif', margin: '20px 0' }}>
+      <h2 style={{ fontSize: '22px', color: '#1e293b', marginBottom: '20px' }}>Attribute Failure Overview</h2>
+
       <div style={{
         background: '#ffffff',
         borderRadius: '24px',
         padding: '30px',
         boxShadow: '0 10px 30px rgba(0, 0, 0, 0.03)'
       }}>
-        <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', color: '#1e2243' }}>
+        <h3 style={{ margin: '0 0 15px 0', fontSize: '18px', color: '#1e2243' }}>
           Attribute Failure Rate by CDE Column
         </h3>
+
+        {/* Small Reusable Progressive Bars */}
+        <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginBottom: '24px' }}>
+          <ProgressiveBar label="Total Attribute Failure Rate" percentage={17.24} color="#E13B19" />
+          <ProgressiveBar label="Data Governance Quality Score" percentage={82.76} color="#1E4620" />
+        </div>
 
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>
