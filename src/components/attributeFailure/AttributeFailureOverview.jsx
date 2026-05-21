@@ -1,190 +1,66 @@
 import React from 'react';
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
-
-const ProgressiveBar = ({ percentage = 60, color = '#E13B19', label = 'Progress' }) => {
-  return (
-    <div style={{
-      width: '100%',
-      maxWidth: '300px',
-    }}>
-      <div style={{ height: '6px', width: '100%', background: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
-        <div style={{
-          height: '100%',
-          width: `${percentage}%`,
-          background: color,
-          borderRadius: '3px',
-          transition: 'width 0.6s ease'
-        }} />
-      </div>
-    </div>
-  );
-};
 
 const AttributeFailureOverview = () => {
-  const chartOptions = {
-    chart: {
-      type: 'bar',
-      backgroundColor: 'transparent',
-      height: 480,
-      marginRight: 60, // Leave space for labels
-      marginLeft: 180, // Leave space for long category names
-      marginTop: 20,
-      marginBottom: 50,
-      spacingBottom: 15,
-      spacingTop: 10,
-      spacingLeft: 10,
-      spacingRight: 10
-    },
-    title: {
-      text: null
-    },
-    credits: {
-      enabled: false
-    },
-    xAxis: {
-      categories: [
-        'RISK_MEASURE_VAL',
-        'TRADE_CCY',
-        'CUST_STATUS_CD',
-        'FIRM_ACTI_ID',
-        'BOOK_ID',
-        'SETTLE_DATE',
-        'NOTIONAL_AMT',
-        'POSITION_QTY',
-        'CUST_ID',
-        'TRADE_REF_NUM'
-      ],
-      reversed: true, // index 0 at the top
-      labels: {
-        align: 'right',
-        style: {
-          color: '#6b7280',
-          fontSize: '11px',
-          fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-          fontWeight: '500',
-          letterSpacing: '0.02em'
-        }
-      },
-      lineWidth: 0,
-      tickWidth: 0,
-      gridLineWidth: 0
-    },
-    yAxis: {
-      min: 0,
-      max: 10,
-      tickInterval: 1,
-      gridLineColor: '#E6ECF4', // Thin light blue/grey vertical grid lines
-      gridLineWidth: 1.5,
-      title: {
-        text: null
-      },
-      labels: {
-        style: {
-          color: '#6b7280',
-          fontSize: '11px',
-          fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, sans-serif'
-        }
-      },
-      lineWidth: 1,
-      lineColor: '#D1D5DB', // Thin line at the bottom
-      tickWidth: 1,
-      tickColor: '#D1D5DB',
-      tickLength: 6,
-      opposite: false
-    },
-    legend: {
-      enabled: false
-    },
-    tooltip: {
-      useHTML: true,
-      backgroundColor: '#1e293b',
-      borderWidth: 0,
-      borderRadius: 8,
-      shadow: true,
-      style: {
-        color: '#ffffff',
-        fontFamily: '"Inter", sans-serif',
-        fontSize: '12px'
-      },
-      formatter: function () {
-        return `<div style="padding: 4px 8px;">
-          <strong style="color: #94a3b8; font-size: 10px; text-transform: uppercase;">${this.x}</strong><br/>
-          <span style="font-size: 13px; font-weight: 600; color: #f8fafc;">Failure Rate: ${this.y}%</span>
-        </div>`;
-      }
-    },
-    plotOptions: {
-      bar: {
-        pointWidth: 10, // Sleek thin bars matching the design
-        borderRadius: 0, // Sharp ends
-        borderWidth: 0,
-        groupPadding: 0.1,
-        pointPadding: 0.05,
-        states: {
-          hover: {
-            brightness: 0.1
-          }
-        },
-        dataLabels: {
-          enabled: true,
-          inside: false,
-          align: 'left',
-          x: 8,
-          verticalAlign: 'middle',
-          style: {
-            fontSize: '11px',
-            fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-            fontWeight: '600',
-            color: '#1f2937',
-            textOutline: 'none'
-          },
-          formatter: function () {
-            return this.y > 0 ? this.y.toFixed(2) + '%' : '';
-          }
-        }
-      }
-    },
-    series: [
-      {
-        name: 'Failure Rate',
-        data: [
-          { y: 8.34, color: '#E13B19' }, // Warm vermillion red/orange
-          { y: 5.34, color: '#E13B19' },
-          { y: 2.78, color: '#E13B19' },
-          { y: 0.78, color: '#1E4620' }, // Forest green
-          { y: 0, color: 'transparent' },
-          { y: 0, color: 'transparent' },
-          { y: 0, color: 'transparent' },
-          { y: 0, color: 'transparent' },
-          { y: 0, color: 'transparent' },
-          { y: 0, color: 'transparent' }
-        ]
-      }
-    ]
-  };
-
   return (
-    <div style={{ fontFamily: 'sans-serif', margin: '20px 0' }}>
-      <h2 style={{ fontSize: '22px', color: '#1e293b', marginBottom: '20px' }}>Attribute Failure Overview</h2>
-
-      <div style={{
-        background: '#ffffff',
-        borderRadius: '24px',
-        padding: '30px',
-        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.03)'
-      }}>
-        <h3 style={{ margin: '0 0 15px 0', fontSize: '18px', color: '#1e2243' }}>
-          Attribute Failure Rate by CDE Column
-        </h3>
-
-        {/* Small Reusable Progressive Bars */}
-        <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginBottom: '24px' }}>
-          <ProgressiveBar label="Total Attribute Failure Rate" percentage={17.24} color="#E13B19" />
-          <ProgressiveBar label="Data Governance Quality Score" percentage={82.76} color="#1E4620" />
+    <div style={{
+      fontFamily: '"Inter", sans-serif',
+      background: '#ffffff',
+      padding: '24px',
+      width: '100%',
+      boxSizing: 'border-box'
+    }}>
+      {/* Top Row: Progress Bar and Failure Rate */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '24px', marginBottom: '16px' }}>
+        {/* Progress Bar Container */}
+        <div style={{ 
+          flex: 1, 
+          height: '10px', 
+          backgroundColor: '#E2E8F0', 
+          borderRadius: '9999px', 
+          display: 'flex', 
+          overflow: 'hidden'
+        }}>
+          <div style={{ width: '2.74%', backgroundColor: '#E13B19' }} />
+          <div style={{ width: '80.02%', backgroundColor: '#1E4620', borderRadius: '0 9999px 9999px 0' }} />
         </div>
 
-        <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+        {/* Failure Rate */}
+        <div style={{ color: '#962828', fontSize: '13px', whiteSpace: 'nowrap' }}>
+          Failure Rate <strong style={{ marginLeft: '6px' }}>2.74%</strong>
+        </div>
+      </div>
+
+      {/* Bottom Row: Legends / Metadata */}
+      <div style={{ display: 'flex', gap: '48px' }}>
+        {/* Legend 1: Failed */}
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#475569' }}>
+            <span style={{ width: '8px', height: '8px', backgroundColor: '#E13B19', borderRadius: '1.5px' }} />
+            Failed <strong style={{ color: '#1E293B' }}>3,420</strong>
+          </div>
+          <div style={{ fontSize: '11px', color: '#94A3B8', paddingLeft: '16px', marginTop: '4px' }}>
+            om_dq_exception
+          </div>
+        </div>
+
+        {/* Legend 2: Passed */}
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#475569' }}>
+            <span style={{ width: '8px', height: '8px', backgroundColor: '#1E4620', borderRadius: '1.5px' }} />
+            Passed <strong style={{ color: '#1E293B' }}>121,580</strong>
+          </div>
+        </div>
+
+        {/* Legend 3: Total */}
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#475569' }}>
+            <span style={{ width: '8px', height: '8px', backgroundColor: '#cbd5e1', borderRadius: '1.5px' }} />
+            Total <strong style={{ color: '#1E293B' }}>125,000</strong>
+          </div>
+          <div style={{ fontSize: '11px', color: '#94A3B8', paddingLeft: '16px', marginTop: '4px' }}>
+            om_dq_applicable_superset
+          </div>
+        </div>
       </div>
     </div>
   );
