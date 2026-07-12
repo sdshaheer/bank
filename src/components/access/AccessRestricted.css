@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap');
+
+.restricted-button:hover {
+  background-color: #164eb8 !important;
+}
+
+.support-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .restricted-top-container {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  .restricted-text-side {
+    max-width: 100% !important;
+  }
+
+  .restricted-illustration-side {
+    justify-content: center !important;
+  }
+
+  .illustration-circle-wrapper {
+    width: 220px !important;
+    height: 220px !important;
+    margin-bottom: -60px !important;
+  }
+
+  .restricted-bottom-container {
+    flex-direction: column !important;
+  }
+
+  .list-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
